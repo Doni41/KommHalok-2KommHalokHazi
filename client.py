@@ -31,31 +31,31 @@ class BinaryFileOpenerAndReader:
     
     def readSecond(self):
         with open(self.files[2], "rb") as f:
-            self.second_file = f.read(14)
+            self.second_file = f.read(16)
             packer = struct.Struct('c 9s i')
             unpacked_data = packer.unpack(self.second_file)
             return unpacked_data
     
     def readThird(self):
         with open(self.files[3], "rb") as f:
-            self.third_file = f.read(10)
+            self.third_file = f.read(12)
             packer = struct.Struct('i ? f')
             unpacked_data = packer.unpack(self.third_file)
             return unpacked_data
     
     def readFourth(self):
         with open(self.files[4], "rb") as f:
-            self.fourth_file = f.read(12)
+            self.fourth_file = f.read(17)
             packer = struct.Struct('c f 9s')
             unpacked_data = packer.unpack(self.fourth_file)
             return unpacked_data
     
     # bináris fájl beolvasása után a pack-elt elemeket printeli ki
-    def printUnpackedData(data):
+    def printUnpackedData(self, data):
         print(data)
 
     # az unpack-elt bináris tartalmat printeli ki
-    def printPackedData(packer, packed_data):
+    def printPackedData(self, packer, packed_data):
         print(packer.pack(*packed_data))
 
 
